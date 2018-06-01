@@ -1,6 +1,8 @@
 #include "Emulate.h"
 
-
+/* This table is the emulation table as defined by the Assignment 1 Document
+The structure is as follows:
+Instruction  Emulation  ArgLocation  Rightsided Argument*/
 struct emulation table[] = {
 	{ "ADC.W", "ADDC.W #0,", Right, NULL },
 { "ADC.B", "ADDC.B #0,", Right, NULL },

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2020
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AssemblerRemake", "AssemblerRemake\AssemblerRemake.vcxproj", "{F93FE6DF-E2C2-45FA-86B3-68F9C586E6BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F93FE6DF-E2C2-45FA-86B3-68F9C586E6BD}.Debug|x64.ActiveCfg = Debug|x64
+		{F93FE6DF-E2C2-45FA-86B3-68F9C586E6BD}.Debug|x64.Build.0 = Debug|x64
+		{F93FE6DF-E2C2-45FA-86B3-68F9C586E6BD}.Debug|x86.ActiveCfg = Debug|Win32
+		{F93FE6DF-E2C2-45FA-86B3-68F9C586E6BD}.Debug|x86.Build.0 = Debug|Win32
+		{F93FE6DF-E2C2-45FA-86B3-68F9C586E6BD}.Release|x64.ActiveCfg = Release|x64
+		{F93FE6DF-E2C2-45FA-86B3-68F9C586E6BD}.Release|x64.Build.0 = Release|x64
+		{F93FE6DF-E2C2-45FA-86B3-68F9C586E6BD}.Release|x86.ActiveCfg = Release|Win32
+		{F93FE6DF-E2C2-45FA-86B3-68F9C586E6BD}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1B2116BE-9BFE-435A-AD58-46F728319633}
+	EndGlobalSection
+EndGlobal

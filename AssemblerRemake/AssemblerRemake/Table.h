@@ -13,7 +13,7 @@
 extern struct emulation {
 	const char *instruction;
 	const char *emulation;
-	char position;
+	int position;
 	char *rightSide;
 };
 

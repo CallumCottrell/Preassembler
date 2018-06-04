@@ -1,10 +1,13 @@
 #include "Emulate.h"
-
+#define Neither 0x00
+#define Right 0x01
+#define Left 0x10
+#define Both 0x11
 /* This table is the emulation table as defined by the Assignment 1 Document
 The structure is as follows:
 Instruction  Emulation  ArgLocation  Rightsided Argument*/
 struct emulation table[] = {
-	{ "ADC.W", "ADDC.W #0,", Right, NULL },
+{ "ADC.W", "ADDC.W #0,", Right, NULL },
 { "ADC.B", "ADDC.B #0,", Right, NULL },
 { "ADC", "ADDC #0,",  Right, NULL },
 { "CALL", "BL", Neither, NULL },
@@ -63,7 +66,6 @@ struct emulation table[] = {
 };
 
 int sizeOfTable(void) {
-	printf("%d", (int)((sizeof(table) / sizeof(table[0]))));
 	return (sizeof(table) / sizeof(table[0]));
 }
 

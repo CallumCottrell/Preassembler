@@ -3,59 +3,88 @@
 #include "stdlib.h"
 #include "Table.h"
 #include "Emulate.h"
-
 extern struct emulation table[];
+#define True 1
+#define False 0
+#define Neither 0x00
+#define Right 0x01
+#define Left 0x10
+#define Both 0x11
+//This function will tokenize the Record into separate tokens. The assumed maximum size for a Record
 
-void doTheThing(char *record) {
+void doTheThing(char *noComments) {
+	char bigBuff[200]; // A char array to hold the Non-Comment tokens from the Record
+	char smallBuff[15];
+	int sizeOfRecord = sprintf(bigBuff, "%s" , noComments);
+	int numOfTokens;
+	int set = 0;
 
-	char buff = strtok(record, " ");
-	char tokens[200];
+	char *toker = strtok(bigBuff, ", "); // start reading the buffer and parse by spaces and ,
+	char *tokens[80];
 	int i = 0;
 
-	while (buff != NULL) {
-		tokens[i] = buff;
-		i++;
-		buff = strtok(NULL, ", ");
+	while (toker != NULL) {
+		tokens[i++] = toker;
+		toker = strtok(NULL, ", ");
 	}
 
-	i = 0;
-	char set = 0x00;
-	while (tokens[i] != NULL) {
+	numOfTokens = i;
+	tokens[i] = NULL;
+
+	//Check each token
+	for (i =0; i < numOfTokens; i++) {
+		//Check every instruction in the table
 		for (int k = 0; k < sizeOfTable(); k++) {
-			if (strcmp(tokens[i], table[k].instruction) == 0) { // cannot just compare strings willy nilly. use strcmp.
-				printf("success, both equal %s \n", tokens[i]);
-				set = 0x01;
-				\
+			//If there is a match....
+			if (_stricmp(tokens[i], table[k].instruction) == 0) { // cannot just compare strings willy nilly. use strcmp.
+				printf("\nsuccess! you found a match on %s and the position of the argument is: %d\n", tokens[i], table[k].position);
+				//Check how the handle the emulation. Dependent on the amount of arguments.
+				switch (table[k].position) {
+				case Neither: 
+					printf("instruction has no arguments\n");
 					tokens[i] = table[k].emulation;
+					break;
+
+				case Right:
+					printf("instruction has an argument on the right\n");
+					if ((tokens[i + 2] != NULL) | (tokens[i + 1] == NULL)) {
+						printf("Error found");
+						set = True;
+					}
+					tokens[i++] = table[k].emulation;
+		
+					break;
+
+				case Left:
+					if ((tokens[i + 2] != NULL) | (tokens[i + 1] == NULL)) {
+						printf("Error found");
+						set = True;
+					}
+					tokens[i++] = table[k].emulation;
+					tokens[i + 1] = table[k].rightSide;
+					break;
+				case Both:
+					printf("instruction arguments both side."); 
+					if ((tokens[i + 2] != NULL )|(tokens[i+1] == NULL)) {
+						printf("Error found");
+						set = True;
+					}
+					sprintf(smallBuff, "%s, %s", tokens[i + 1], tokens[i + 1]);
+					tokens[i++] = table[k].emulation; // skippin over to the next 
+					tokens[i] = smallBuff;
+					break;
+
+				default:
+					break;
+				}
 			}
 		}
-		i++;
-		set = 0x00;
-	}
-	int k = sizeOfTable();
-	/* for (int i; i < amountOfTokens; i++) {
-	for ( int k = 0; k = sizeOfTable(); k++){
-	if(tokens[i] == table[k].instruction){
-	printf("success");
-	}
-	}
-	}
-	*/
 
-
-	/*
-	switch (table[1].position) {
-	case Neither: // the right
-	printf("instruction has no arguments\n");
-	break;
-	case 0x01:
-	printf("instruction has an argumen2t on the right\n");
-	break;
-	default:
-	break;
 	}
-	*/
-
+		printf("\n");
+	for (i = 0; i < numOfTokens; i++) {
+		printf("%s ", tokens[i]);
+	}
 
 
 	getchar();

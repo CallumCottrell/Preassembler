@@ -75,7 +75,6 @@ int main(int argc, char *argv[]) {
 	char *xmeext; //location of "." before extension in argv[1]
 	int xmelen; // length of the XME filename
 	char record[200]; // One line of the input file.
-
 	if (argc < 2) {
 		printf("insufficient arguments\n");
 		getchar();
@@ -95,14 +94,23 @@ int main(int argc, char *argv[]) {
 		return 1;
 	}
 	// Display the filename for debugging purposes.
-	printf("Filename: %s\n", argv[1]);
+	printf("filename: %s\n", argv[1]);
 
 	// Read a line from the input file. Store in a record. 
 	fgets(record, 200, infile);
 
-	printf("\n record is : %s", record);
+	printf("\n record is :'%s'", record);
 
-	doTheThing(record);
+	char *noComments = strtok(record, ";");
+
+	/*while (noComments != NULL) {
+		printf("\nthe token is: %s", noComments);
+	
+
+		noComments = strtok(NULL, ";");
+	}
+	*/
+	doTheThing(noComments);
 
 	getchar();
 

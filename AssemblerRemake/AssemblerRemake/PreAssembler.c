@@ -96,22 +96,18 @@ int main(int argc, char *argv[]) {
 	// Display the filename for debugging purposes.
 	printf("filename: %s\n", argv[1]);
 
-	// Read a line from the input file. Store in a record. 
-	fgets(record, 200, infile);
+	char *noComments;
 
-	printf("\n record is :'%s'", record);
+	while (fgets(record, 200, infile) != NULL) {
+		noComments = strtok(record, ";");
+		doTheThing(noComments);
 
-	char *noComments = strtok(record, ";");
-
-	/*while (noComments != NULL) {
-		printf("\nthe token is: %s", noComments);
-	
-
-		noComments = strtok(NULL, ";");
+		//If the end of the file is reached
+		if (feof(infile)) {
+			printf(" hit end of file ");
+			break;
+		}
 	}
-	*/
-	doTheThing(noComments);
-
 	getchar();
 
 	fclose(infile);

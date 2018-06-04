@@ -37,16 +37,13 @@ void doTheThing(char *noComments) {
 		for (int k = 0; k < sizeOfTable(); k++) {
 			//If there is a match....
 			if (_stricmp(tokens[i], table[k].instruction) == 0) { // cannot just compare strings willy nilly. use strcmp.
-				printf("\nsuccess! you found a match on %s and the position of the argument is: %d\n", tokens[i], table[k].position);
 				//Check how the handle the emulation. Dependent on the amount of arguments.
 				switch (table[k].position) {
 				case Neither: 
-					printf("instruction has no arguments\n");
 					tokens[i] = table[k].emulation;
 					break;
 
 				case Right:
-					printf("instruction has an argument on the right\n");
 					if ((tokens[i + 2] != NULL) | (tokens[i + 1] == NULL)) {
 						printf("Error found");
 						set = True;
@@ -56,19 +53,21 @@ void doTheThing(char *noComments) {
 					break;
 
 				case Left:
+
 					if ((tokens[i + 2] != NULL) | (tokens[i + 1] == NULL)) {
 						printf("Error found");
 						set = True;
 					}
+
 					tokens[i++] = table[k].emulation;
 					tokens[i + 1] = table[k].rightSide;
 					break;
 				case Both:
-					printf("instruction arguments both side."); 
 					if ((tokens[i + 2] != NULL )|(tokens[i+1] == NULL)) {
 						printf("Error found");
 						set = True;
 					}
+					// May not be needed. Just trying to minimize number of tokens
 					sprintf(smallBuff, "%s, %s", tokens[i + 1], tokens[i + 1]);
 					tokens[i++] = table[k].emulation; // skippin over to the next 
 					tokens[i] = smallBuff;
@@ -79,15 +78,9 @@ void doTheThing(char *noComments) {
 				}
 			}
 		}
-
 	}
-		printf("\n");
 	for (i = 0; i < numOfTokens; i++) {
-		printf("%s ", tokens[i]);
+		printf(" %s", tokens[i]);
 	}
-
-
-	getchar();
-
 
 }

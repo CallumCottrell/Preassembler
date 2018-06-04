@@ -38,7 +38,7 @@ struct emulation table[] = {
 { "JUMP", "MOV, ", Left, ",R7" },
 { "NOP", "MOV R6,R6", Neither, NULL },
 { "PULL", "LD R5+,", Right, NULL },
-{ "PUSH", "ST ", Left, ",-R5" },
+{ "PUSH", "ST", Left, ",-R5" },
 { "RET", "MOV R4,R7", Right, NULL },
 { "RLC.W", "ADDC.W,", Both, NULL },
 { "RLC.B", "ADDC.B ", Both, NULL },

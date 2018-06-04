@@ -3,7 +3,14 @@
 #include "stdlib.h"
 #include "Table.h"
 #include "Emulate.h"
+#define Neither (char)0x00
+#define Right (char)0x01
+#define Left (char)0x10
+#define Both (char)0x11
 
+#define MAX_RECORD_SIZE 200
+
+#define NAMEEXTRA 8;
 /*
 This code is reponsible for the handling of the input file. It can take a file as an argument in the .exe file and 
 will take the text within the input file one line at a time. Each line is to be considered a record and each record is
@@ -14,16 +21,6 @@ By Callum Cottrell
 File reading based on Dr Hughes in class notes
 */
 
-/* These may be better off as ints, since defining defaults to int*/
-#define Neither (char)0x00
-#define Right (char)0x01
-#define Left (char)0x10
-#define Both (char)0x11
-
-#define MAX_RECORD_SIZE 200
-
-#define NAMEEXTRA 5;
-
 
 FILE *xmefile; // the X Makina executable file
 FILE *lisfile; // .lis file for 1st and 2nd pass errors
@@ -33,13 +30,6 @@ extern struct emulation table[]; // The table from the table file linked above. 
 /* This function will create a new file based on the*/
 int newFileFromOld(FILE **newfptr, char *oldFileName, char **newName, char *extension, char *mode) {
 
-	/* Create a new file from an old fie(name) by chaning the extension
-	-Alllocate space for new name plus extension and copu old to new
-	- Overwrite old extension (if it exists)
-	- Aattempt to open in specified mode
-	- Return '0' if successs, !0 otherwise
-	*/
-
 	int newlen;
 	char *extaddr;
 	int rc;
@@ -48,23 +38,18 @@ int newFileFromOld(FILE **newfptr, char *oldFileName, char **newName, char *exte
 
 	newlen = strlen(oldFileName) + NAMEEXTRA;
 	*newName = (char*)malloc(newlen);
-	strcpy_s(*newName, newlen, extension);
+	
+	strcpy_s(*newName, newlen, oldFileName);
+	strcat_s(*newName, newlen, extension);
 
 	if ((extaddr = strstr(*newName, ".")) != NULL) { // Found "." before the end of the extension
-		*extaddr = 48; // ASCII for 0, NUL not working for me right now
-
+		*extaddr = NULL; // ASCII for 0, NUL not found on Visual Studio for now
 		strcat_s(*newName, newlen, extension); // Concatenate the extension to the new name
-
 		rc = fopen_s(newfptr, *newName, mode);
-
 		return rc;
 	}
 }
-	void common_diagnostics(char *msg) {
-		fprintf_s(lisfile, msg);
-		printf(msg);
-	}
-	
+
 
 int main(int argc, char *argv[]) {
 	/* Variable Declaration */
@@ -74,7 +59,8 @@ int main(int argc, char *argv[]) {
 	char *hdrname; //pointer to the filename without path
 	char *xmeext; //location of "." before extension in argv[1]
 	int xmelen; // length of the XME filename
-	char record[200]; // One line of the input file.
+	char record[MAX_RECORD_SIZE]; // One line of the input file.
+	int *sizeOfRecord = 0;
 	if (argc < 2) {
 		printf("insufficient arguments\n");
 		getchar();
@@ -87,25 +73,39 @@ int main(int argc, char *argv[]) {
 		getchar();
 		return 1;
 	}
-
-	if (newFileFromOld(&lisfile, argv[1], &lisname, (char*) ".lis", (char*) "w") != 0) {
-		printf("can't open the .lis file \n");
+	// This will take the old file name and make a new one, with new file ending in New.asm 
+	if (newFileFromOld(&lisfile, argv[1], &lisname, (char*) "New.asm", (char*) "w") != 0) {
+		printf("can't open the new .asm file \n");
 		getchar();
 		return 1;
 	}
 	// Display the filename for debugging purposes.
 	printf("filename: %s\n", argv[1]);
 
-	char *noComments;
+	char *parser;
+	char *comments;
+	char **emulated_Tokens;
+	char *delimiter = ";";
+	
+	//Read through the entire file line by line. 
+	while (fgets(record, MAX_RECORD_SIZE, infile) != NULL) {
 
-	while (fgets(record, 200, infile) != NULL) {
-		noComments = strtok(record, ";");
-		doTheThing(noComments);
+		parser = strtok(record, delimiter);
+		printf("\ncomments %s", parser);
 
+		emulated_Tokens = EmulateTokens(parser, *sizeOfRecord);
+
+		parser = strtok(NULL, delimiter);
+
+		printf("\ncomments %s", parser);
 		//If the end of the file is reached
 		if (feof(infile)) {
-			printf(" hit end of file ");
 			break;
+		}
+		
+		printf("size of record:", sizeOfRecord);
+		for (int i = 0; i < sizeOfRecord; i++) {
+			printf(" %s", emulated_Tokens[i]);
 		}
 	}
 	getchar();

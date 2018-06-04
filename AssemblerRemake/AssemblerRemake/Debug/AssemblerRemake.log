@@ -1,7 +1,30 @@
 ﻿  Emulate.c
 c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\table.h(18): warning C4091: 'extern ': ignored on left of 'emulation' when no variable is declared
-c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\emulate.c(43): warning C4090: '=': different 'const' qualifiers
-c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\emulate.c(51): warning C4090: '=': different 'const' qualifiers
-c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\emulate.c(62): warning C4090: '=': different 'const' qualifiers
+c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\emulate.c(18): error C2373: 'EmulateTokens': redefinition; different type modifiers
+  c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\emulate.h(9): note: see declaration of 'EmulateTokens'
+c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\emulate.c(34): warning C4047: '=': 'int *' differs in levels of indirection from 'int'
+c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\emulate.c(38): warning C4047: '<': 'int' differs in levels of indirection from 'int *'
+c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\emulate.c(46): warning C4090: '=': different 'const' qualifiers
+c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\emulate.c(53): warning C4090: '=': different 'const' qualifiers
+c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\emulate.c(61): warning C4090: '=': different 'const' qualifiers
 c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\emulate.c(72): warning C4090: '=': different 'const' qualifiers
-  AssemblerRemake.vcxproj -> C:\Users\callu\Desktop\Preassembler\AssemblerRemake\Debug\AssemblerRemake.exe
+  PreAssembler.c
+c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\table.h(18): warning C4091: 'extern ': ignored on left of 'emulation' when no variable is declared
+c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\preassembler.c(6): warning C4005: 'Neither': macro redefinition
+  c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\table.h(8): note: see previous definition of 'Neither'
+c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\preassembler.c(7): warning C4005: 'Right': macro redefinition
+  c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\table.h(9): note: see previous definition of 'Right'
+c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\preassembler.c(8): warning C4005: 'Left': macro redefinition
+  c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\table.h(10): note: see previous definition of 'Left'
+c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\preassembler.c(9): warning C4005: 'Both': macro redefinition
+  c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\table.h(11): note: see previous definition of 'Both'
+c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\preassembler.c(39): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\preassembler.c(46): warning C4047: '=': 'char' differs in levels of indirection from 'void *'
+c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\preassembler.c(95): warning C4020: 'EmulateTokens': too many actual parameters
+c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\preassembler.c(95): error C2440: '=': cannot convert from 'void' to 'char **'
+c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\preassembler.c(106): warning C4047: '<': 'int' differs in levels of indirection from 'int *'
+c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\preassembler.c(105): warning C4474: 'printf' : too many arguments passed for format string
+  c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\preassembler.c(105): note: placeholders and their parameters expect 0 variadic arguments, but 1 were provided
+  Table.c
+c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\table.h(18): warning C4091: 'extern ': ignored on left of 'emulation' when no variable is declared
+  Generating Code...

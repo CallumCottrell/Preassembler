@@ -6,7 +6,7 @@
 #include "Table.h"
 #include "Emulate.h"
 
-void doTheThing(char *record);
+void EmulateTokens(char *record);
 
 
 #endif

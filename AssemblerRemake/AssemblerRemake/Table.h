@@ -10,7 +10,7 @@
 #define Left 0x10
 #define Both 0x11
 
-extern struct emulation {
+struct emulation {
 	const char *instruction;
 	const char *emulation;
 	int position;

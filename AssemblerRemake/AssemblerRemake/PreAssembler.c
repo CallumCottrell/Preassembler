@@ -60,7 +60,7 @@ int main(int argc, char *argv[]) {
 	char *finalRecord[MAX_RECORD_SIZE]; // The version of the record to be written to the file
 	char *parser; // The parser is the character pointer that iterates through the record
 	char *commentTokens[MAX_RECORD_SIZE]; // The comments are stored in this array
-	char *delimiterComment = ";"; // The delimiter is for strtok to tokenize by
+	char delimiterComment[] = ";"; // The delimiter is for strtok to tokenize by
 	int numOfTokens = 0; // The number of tokens.
 	int i = 0; // for iterating through regular arrays
 	int k = 0; // for iterating through the finalRecord Array
@@ -89,27 +89,34 @@ int main(int argc, char *argv[]) {
 
 	//Read through the entire file line by line. 
 	while (fgets(record, MAX_RECORD_SIZE, infile) != NULL) {
+		printf("debugging \n");
 		switch (record[0]){
 		case ';':
-			
+			while (record[i] != NULL){
+				fprintf_s(newfile, "%c" , record[i]);
+				i++;
+			}
+			i = 0;
 			break;
 		default: 
+			
 			//Parse the record by tokenizing via strtok with ; as a delimiter
 			parser = strtok(record, delimiterComment);
-
+			
 			//Everything before the first ";" is non-comment
 			char *tokens = parser;
-			printf("tokens %s \n", tokens);
+			//printf("tokens %s \n", tokens);
 			//Find the rest of the comments. must complete the line of the file incase many ; are found
 			while (parser != NULL) {
 				parser = strtok(NULL, delimiterComment);
 				commentTokens[i++] = parser;
 			}
-
+		
 			//Give the tokens found to the Emulation algorithm
 			char **emulated_Tokens = EmulateTokens(tokens, &numOfTokens, &errorFlag);
 
 			k = 0;
+			
 			// Print the Emulated Tokens
 			for (i = 0; i < numOfTokens; i++) {
 				//Iterating through the pointer to a pointer of chars will iterate through the pointer by the correct amount.
@@ -126,17 +133,16 @@ int main(int argc, char *argv[]) {
 			}
 			i = 0;
 			if (errorFlag == True) {
-				finalRecord[k++] = ";ERROR_FOUND_PREASSEMBLER\n";
+				finalRecord[k++] = ";ERROR_FOUND_BY_PREASSEMBLER\n";
 			}
 
 			// Final record assembled. Write to the file
 			for (i = 0; i < k; i++) {
-				fputs(finalRecord[i], newfile);
+				fprintf_s(newfile, "%s", finalRecord[i]);
+				printf("finalRecord[i] = %s\n", finalRecord[i]);
 			}
+			fprintf(newfile, "\n");
 			i = 0;
-		}
-		if (feof(infile)) {
-			break;
 		}
 		
 	}

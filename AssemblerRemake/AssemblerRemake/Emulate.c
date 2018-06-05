@@ -19,8 +19,9 @@ char** EmulateTokens(char *noComments, int *numOfTokens, int *set) {
 	char bigBuff[MAX_RECORD_SIZE]; // A char array to hold the Non-Comment tokens from the Record
 	char smallBuff[MAX_EMULATE_SIZE]; //buffer required for each token in the array
 	int sizeOfRecord = sprintf(bigBuff, "%s" , noComments); // Makes the character pointer into a character array, also returns size of array
-	char *toker = strtok(bigBuff, ", \n"); // toker holds the values during the tokenize process
+	char *toker = strtok(bigBuff, ", \n\t"); // toker holds the values during the tokenize process
 	char *tokens[MAX_RECORD_SIZE]; // The emulated Tokens to return
+	int newTokens = 0;
 	int i = 0; // For iterating
 
 	// Initiliaze as false
@@ -29,7 +30,7 @@ char** EmulateTokens(char *noComments, int *numOfTokens, int *set) {
 	//Read through the input Record and store the tokens in a character pointer array
 	while (toker != NULL) {
 		tokens[i++] = toker;
-		toker = strtok(NULL, ", \n");
+		toker = strtok(NULL, ", \n\t");
 	}
 	//Store the number of tokens. Number is one extra. Maybe change above lines to save
 	// Having to set tokens[i] as null since toker is null at the end anyway
@@ -63,9 +64,11 @@ char** EmulateTokens(char *noComments, int *numOfTokens, int *set) {
 						*set = True;
 					}
 					//Assign the current string in the token array to equal the emulation table. Increment i
-					tokens[i++] = table[k].emulation;
+					tokens[i] = table[k].emulation;
+					printf("tokens at i %s  %s  %s", tokens[0], tokens[1], tokens[2]);
 					//Assign the next token to be the right side constant from the table.
-					tokens[i + 1] = table[k].rightSide;
+					tokens[i + 2] = table[k].rightSide;
+					newTokens++;
 					break;
 				case Both:
 					if ((tokens[i + 2] != NULL )|(tokens[i+1] == NULL)) {
@@ -87,6 +90,7 @@ char** EmulateTokens(char *noComments, int *numOfTokens, int *set) {
 	}
 
 	//The tokens have been correctly assembled. Return to the main
+	*numOfTokens = *numOfTokens + newTokens;
 		return tokens;
 
 }

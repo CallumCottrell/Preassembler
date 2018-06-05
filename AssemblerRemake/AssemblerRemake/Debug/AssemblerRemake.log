@@ -2,6 +2,7 @@
 c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\table.h(18): warning C4091: 'extern ': ignored on left of 'emulation' when no variable is declared
 c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\preassembler.c(33): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
 c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\preassembler.c(40): warning C4047: '=': 'char' differs in levels of indirection from 'void *'
+c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\preassembler.c(95): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
 c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\preassembler.c(54): warning C4101: 'hdrname': unreferenced local variable
 c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\preassembler.c(55): warning C4101: 'xmeext': unreferenced local variable
 c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\preassembler.c(51): warning C4101: 'outfile': unreferenced local variable

@@ -1,20 +1,19 @@
-﻿  Table.c
-  PreAssembler.c
-c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\preassembler.c(34): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\preassembler.c(45): warning C4047: '=': 'char' differs in levels of indirection from 'void *'
-c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\preassembler.c(104): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
-c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\preassembler.c(59): warning C4101: 'hdrname': unreferenced local variable
-c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\preassembler.c(60): warning C4101: 'xmeext': unreferenced local variable
-c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\preassembler.c(56): warning C4101: 'outfile': unreferenced local variable
-c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\preassembler.c(61): warning C4101: 'xmelen': unreferenced local variable
-c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\preassembler.c(57): warning C4101: 'xmename': unreferenced local variable
+﻿  PreAssembler.c
+c:\users\callu\downloads\preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\assemblerremake\assemblerremake\preassembler.c(41): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\users\callu\downloads\preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\assemblerremake\assemblerremake\preassembler.c(48): warning C4047: '=': 'char' differs in levels of indirection from 'void *'
+c:\users\callu\downloads\preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\assemblerremake\assemblerremake\preassembler.c(103): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
+c:\users\callu\downloads\preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\assemblerremake\assemblerremake\preassembler.c(62): warning C4101: 'hdrname': unreferenced local variable
+c:\users\callu\downloads\preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\assemblerremake\assemblerremake\preassembler.c(63): warning C4101: 'xmeext': unreferenced local variable
+c:\users\callu\downloads\preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\assemblerremake\assemblerremake\preassembler.c(59): warning C4101: 'outfile': unreferenced local variable
+c:\users\callu\downloads\preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\assemblerremake\assemblerremake\preassembler.c(64): warning C4101: 'xmelen': unreferenced local variable
+c:\users\callu\downloads\preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\assemblerremake\assemblerremake\preassembler.c(60): warning C4101: 'xmename': unreferenced local variable
   Emulate.c
-c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\emulate.c(73): warning C4090: '=': different 'const' qualifiers
-c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\emulate.c(84): warning C4090: '=': different 'const' qualifiers
-c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\emulate.c(99): warning C4090: '=': different 'const' qualifiers
-c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\emulate.c(107): warning C4047: '=': 'int *' differs in levels of indirection from 'int'
-c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\emulate.c(111): warning C4090: '=': different 'const' qualifiers
+c:\users\callu\downloads\preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\assemblerremake\assemblerremake\emulate.c(67): warning C4090: '=': different 'const' qualifiers
+c:\users\callu\downloads\preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\assemblerremake\assemblerremake\emulate.c(75): warning C4090: '=': different 'const' qualifiers
+c:\users\callu\downloads\preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\assemblerremake\assemblerremake\emulate.c(83): warning C4090: '=': different 'const' qualifiers
+c:\users\callu\downloads\preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\assemblerremake\assemblerremake\emulate.c(91): warning C4047: '=': 'int *' differs in levels of indirection from 'int'
+c:\users\callu\downloads\preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\assemblerremake\assemblerremake\emulate.c(95): warning C4090: '=': different 'const' qualifiers
   Generating Code...
-c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\emulate.c(125): warning C4172: returning address of local variable or temporary: tokens
-c:\users\callu\desktop\preassembler\assemblerremake\assemblerremake\preassembler.c(50): warning C4715: 'newFileFromOld': not all control paths return a value
-  AssemblerRemake.vcxproj -> C:\Users\callu\Desktop\Preassembler\AssemblerRemake\Debug\AssemblerRemake.exe
+c:\users\callu\downloads\preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\assemblerremake\assemblerremake\emulate.c(110): warning C4172: returning address of local variable or temporary: tokens
+c:\users\callu\downloads\preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\assemblerremake\assemblerremake\preassembler.c(53): warning C4715: 'newFileFromOld': not all control paths return a value
+  AssemblerRemake.vcxproj -> C:\Users\callu\Downloads\Preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\Preassembler-45abeee2fba0ed3c03b03f1fcc9b8c2a33dc6e41\AssemblerRemake\Debug\AssemblerRemake.exe

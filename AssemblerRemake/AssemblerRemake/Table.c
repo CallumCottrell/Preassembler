@@ -5,15 +5,7 @@
 #define Both 0x11
 /* This table is the emulation table as defined by the Assignment 1 Document
 The structure is as follows:
-Instruction  Emulation  ArgLocation  Rightsided Argument
-
-A table of structures is useful for returning to the table and editing 
-parameters. It is also much lighter from a coding perspective to 
-hardcode some of the behaviours of the certain emulations into the table.
-
-This file also contains the size of table function. This is needed 
-in order to check the table in the for loop in the Emulate.c file. 
-*/
+Instruction  Emulation  ArgLocation  Rightsided Argument*/
 struct emulation table[] = {
 { "ADC.W", "ADDC.W #0,", Right, NULL },
 { "ADC.B", "ADDC.B #0,", Right, NULL },

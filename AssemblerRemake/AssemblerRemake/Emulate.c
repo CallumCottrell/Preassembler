@@ -15,30 +15,34 @@ extern struct emulation table[];
 #define MAX_RECORD_SIZE 100
 #define MAX_EMULATE_SIZE 15
 
-char** EmulateTokens(char *noComments, int *numOfTokens) {
+char** EmulateTokens(char *noComments, int *numOfTokens, int *set) {
 	char bigBuff[MAX_RECORD_SIZE]; // A char array to hold the Non-Comment tokens from the Record
-	char smallBuff[MAX_EMULATE_SIZE];
+	char smallBuff[MAX_EMULATE_SIZE]; //buffer required for each token in the array
 	int sizeOfRecord = sprintf(bigBuff, "%s" , noComments); // Makes the character pointer into a character array, also returns size of array
-	int set = 0;
-	char *toker = strtok(bigBuff, ", "); // start reading the buffer and parse by spaces and ,
-	char *tokens[MAX_RECORD_SIZE];
-	int i = 0;
+	char *toker = strtok(bigBuff, ", \n"); // toker holds the values during the tokenize process
+	char *tokens[MAX_RECORD_SIZE]; // The emulated Tokens to return
+	int i = 0; // For iterating
+
+	// Initiliaze as false
+	*set = False; 
 
 	//Read through the input Record and store the tokens in a character pointer array
 	while (toker != NULL) {
 		tokens[i++] = toker;
-		toker = strtok(NULL, ", ");
+		toker = strtok(NULL, ", \n");
 	}
 	//Store the number of tokens. Number is one extra. Maybe change above lines to save
 	// Having to set tokens[i] as null since toker is null at the end anyway
-	numOfTokens = i ;
+	*numOfTokens = i ;
 	tokens[i] = NULL;
-
+	if (*numOfTokens > 4) {
+		*set = True;
+	}
 	//Check each token
-	for (i = 0; i < numOfTokens; i++) {
-		//Check every instruction in the table
+	for (i = 0; i < *numOfTokens; i++) {
+		//Check every instruction in the table against current token
 		for (int k = 0; k < sizeOfTable(); k++) {
-			//If there is a match....
+			//If there is a match...
 			if (_stricmp(tokens[i], table[k].instruction) == 0) { 
 				//Check how the handle the emulation. Dependent on the amount of arguments.
 				switch (table[k].position) {
@@ -46,16 +50,17 @@ char** EmulateTokens(char *noComments, int *numOfTokens) {
 					tokens[i] = table[k].emulation;
 					break;
 				case Right:
+					printf("Tokens[i+2] = %s\n", tokens[i + 2]);
 					if ((tokens[i + 2] != NULL) | (tokens[i + 1] == NULL)) {
 						printf("Error found");
-						set = True;
+						*set = True;
 					}
 					tokens[i++] = table[k].emulation;
 					break;
 				case Left:
 					if ((tokens[i + 2] != NULL) | (tokens[i + 1] == NULL)) {
 						printf("Error found");
-						set = True;
+						*set = True;
 					}
 					//Assign the current string in the token array to equal the emulation table. Increment i
 					tokens[i++] = table[k].emulation;
@@ -74,12 +79,14 @@ char** EmulateTokens(char *noComments, int *numOfTokens) {
 					break;
 
 				default:
+
 					break;
 				}
 			}
 		}
 	}
 
-	return tokens;
+	//The tokens have been correctly assembled. Return to the main
+		return tokens;
 
 }
